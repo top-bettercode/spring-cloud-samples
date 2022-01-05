@@ -1,0 +1,14 @@
+summer:
+  autodoc:
+    gen:
+      enable: @autodoc.enable@
+      version: v@app.version@
+      table-prefixes: @generator.tablePrefix@
+      table-suffixes: @generator.tableSuffix@
+      entity-prefix: @generator.entityPrefix@
+      data-type: @generator.dataType@
+#      disable-on-exception: false
+
+spring:
+  datasource.url: ''
+  jpa.hibernate.ddl-auto: create-drop

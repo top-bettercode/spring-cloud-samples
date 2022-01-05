@@ -1,0 +1,150 @@
+version: '3.1'
+
+services:
+  eureka-0:
+    build: base
+    container_name: eureka-0
+    hostname: eureka-0
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - logging.level.root=@logging.level.root@
+    volumes:
+      - ./eureka:/app/eureka
+      - ./data/logs:@logging.files.path@
+    ports:
+      - @server.eureka.server.port@:@server.eureka.server.port@
+    command: /app/eureka/bin/eureka
+  zuul-0:
+    build: base
+    container_name: zuul-0
+    hostname: zuul-0
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - logging.level.root=@logging.level.root@
+    volumes:
+      - ./zuul:/app/zuul
+      - ./data/logs:@logging.files.path@
+      - ./license.lic:/app/license.lic
+    ports:
+      - @server.zuul.server.port@:@server.zuul.server.port@
+    command: /app/zuul/bin/zuul
+  auth-0:
+    build: base
+    container_name: auth-0
+    hostname: auth-0
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - logging.level.root=@logging.level.root@
+      - spring.datasource.url=@user.datasource.url@
+      - spring.datasource.username=@user.datasource.username@
+      - spring.datasource.password=@user.datasource.password@
+    volumes:
+      - ./auth:/app/auth
+      - ./data/logs:@logging.files.path@
+    ports:
+      - @server.auth.server.port@:@server.auth.server.port@
+    command: /app/auth/bin/auth
+  chat-0:
+    build: base
+    container_name: chat-0
+    hostname: chat-0
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - logging.level.root=@logging.level.root@
+      - spring.datasource.url=@chat.datasource.url@
+      - spring.datasource.username=@chat.datasource.username@
+      - spring.datasource.password=@chat.datasource.password@
+      - client.callback=@client.callback@
+      - client.privilege-token=@client.privilege-token@
+      - chat.event-timeout=@chat.event-timeout@
+      - mimc.mock=@mimc.mock@
+    volumes:
+      - ./chat:/app/chat
+      - ./data/logs:@logging.files.path@
+    ports:
+      - @service.chat.server.port@:@service.chat.server.port@
+    command: /app/chat/bin/chat
+  file-0:
+    build: base
+    container_name: file-0
+    hostname: file-0
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - logging.level.root=@logging.level.root@
+      - spring.datasource.url=@user.datasource.url@
+      - spring.datasource.username=@user.datasource.username@
+      - spring.datasource.password=@user.datasource.password@
+      - app.multipart.file-url-format=@multipart.file-url-format@
+    volumes:
+      - ./file:/app/fileApp
+      - ./data/logs:@logging.files.path@
+      - ./data/file:@multipart.base-save-path@
+    ports:
+      - @service.file.server.port@:@service.file.server.port@
+    command: /app/fileApp/bin/file
+  script-0:
+    build: base
+    container_name: script-0
+    hostname: script-0
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - logging.level.root=@logging.level.root@
+      - spring.datasource.url=@script.datasource.url@
+      - spring.datasource.username=@script.datasource.username@
+      - spring.datasource.password=@script.datasource.password@
+    volumes:
+      - ./script:/app/script
+      - ./data/logs:@logging.files.path@
+    ports:
+      - @service.script.server.port@:@service.script.server.port@
+    command: /app/script/bin/script
+  user-0:
+    build: base
+    container_name: user-0
+    hostname: user-0
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+      - logging.level.root=@logging.level.root@
+      - app.multipart.file-url-format=@multipart.file-url-format@
+      - spring.datasource.url=@user.datasource.url@
+      - spring.datasource.username=@user.datasource.username@
+      - spring.datasource.password=@user.datasource.password@
+      - config.path=@config.forget.path@
+      - config.expire-time=@config.emailCode.expire.time@
+      - config.init-password=@config.init.password@
+      - config.h5-path=@config.h5-path@
+      - client.offline-count=@client.offline-count@
+      - video-client.notify-url=@video-client.notify-url@
+      - video-client.timeout=@video-client.timeout@
+      - video-client.servers[0].url=@video-client.url@
+      - video-client.servers[0].num=@video-client.batch@
+      - eomp-client.host-sync-enable=@eomp-client.host-sync-enable@
+    volumes:
+      - ./user:/app/user
+      - ./data/logs:@logging.files.path@
+      - ./license.lic:/app/license.lic
+    ports:
+      - @service.user.server.port@:@service.user.server.port@
+    command: /app/user/bin/user
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    hostname: nginx
+    restart: always
+    user: root
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./web:/usr/share/nginx/html:ro
+    ports:
+      - 80:80
+    links:
+      - zuul-0
