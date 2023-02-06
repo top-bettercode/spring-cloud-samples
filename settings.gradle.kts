@@ -16,7 +16,6 @@ include(":service:integrated-praise-consumer")
 include(":service:integrated-praise-provider")
 include(":service:integrated-storage")
 
-include(":tools:integrated-common")
 include(":tools:integrated-frontend")
 include(":tools:test")
 
