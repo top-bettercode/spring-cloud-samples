@@ -11,7 +11,9 @@ spring:
         server-addr: nacos-server:8848
         group: integrated-example
   config:
-    import: optional:nacos:integrated-provider.yaml
+    import:
+      - optional:nacos:integrated-provider.yaml
+      - optional:nacos:summer-config.yaml
 
 server:
   port: 8015

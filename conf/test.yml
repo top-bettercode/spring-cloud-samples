@@ -1,7 +1,2 @@
 #测试环境
-summer:
-  logging:
-    files:
-      path: ../logs
-    slack:
-      channel: test
+

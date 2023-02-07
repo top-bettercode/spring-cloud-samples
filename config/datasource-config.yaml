@@ -5,6 +5,3 @@ spring:
     password: 'root'
   main:
     allow-bean-definition-overriding: true
-mybatis:
-  configuration:
-    map-underscore-to-camel-case: true

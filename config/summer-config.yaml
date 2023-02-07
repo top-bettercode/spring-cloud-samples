@@ -1,0 +1,36 @@
+app:
+  server:
+    port: 8080
+jasypt:
+  encryptor:
+    password: 5Rm2h@jA9fB2N3b8
+logging:
+  level:
+    root: debug
+    hibernate.basic-binder: trace
+spring:
+  datasource:
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 1
+summer:
+  logging:
+    files:
+      path: build/logs
+    request:
+      timeout-alarm-seconds: 5
+    slack:
+      auth-token: ''
+      channel: ''
+    websocket:
+      enabled: true
+  management:
+    auth:
+      password: advj87
+  security:
+    access-token-validity-seconds: 25920000
+    client-id: 9eSdS5Up
+    client-secret: 8o2N8IZf6m9KcZoO
+  sign:
+    client-secret: 'Sd5Upm9'
+    handler-type-prefix: 'com.cdwintech.app'

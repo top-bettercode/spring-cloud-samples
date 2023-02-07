@@ -1,6 +1,7 @@
 #!/bin/sh
 echo "Nacos auto config started"
 datasourceConfig=$(cat ../config/datasource-config.yaml)
+summerConfig=$(cat ../config/summer-config.yaml)
 storageConfig=$(cat ../config/integrated-storage.yaml)
 accountConfig=$(cat ../config/integrated-account.yaml)
 orderConfig=$(cat ../config/integrated-order.yaml)
@@ -8,6 +9,7 @@ gatewayConfig=$(cat ../config/integrated-gateway.yaml)
 providerConfig=$(cat ../config/integrated-provider.yaml)
 consumerConfig=$(cat ../config/integrated-consumer.yaml)
 groupId="integrated-example"
+curl -X POST "nacos-server:8848/nacos/v1/cs/configs" -d "dataId=summer-config.yaml&group=${groupId}&content=${summerConfig}"
 curl -X POST "nacos-server:8848/nacos/v1/cs/configs" -d "dataId=datasource-config.yaml&group=${groupId}&content=${datasourceConfig}"
 curl -X POST "nacos-server:8848/nacos/v1/cs/configs" -d "dataId=integrated-storage.yaml&group=${groupId}&content=${storageConfig}"
 curl -X POST "nacos-server:8848/nacos/v1/cs/configs" -d "dataId=integrated-account.yaml&group=${groupId}&content=${accountConfig}"

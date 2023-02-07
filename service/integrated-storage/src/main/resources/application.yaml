@@ -16,6 +16,7 @@ spring:
     import:
       - optional:nacos:integrated-storage.yaml
       - optional:nacos:datasource-config.yaml
+      - optional:nacos:summer-config.yaml
 
 seata:
   application-id: ${spring.application.name}

@@ -1,13 +1,2 @@
 # 正式环境
-summer:
-  logging:
-    files:
-      path: ../logs
-    slack:
-      channel: release
-    websocket:
-      enabled: false
-logging:
-  level:
-    root: info
-    hibernate.basic-binder: info
+
