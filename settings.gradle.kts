@@ -15,6 +15,7 @@ include(":service:integrated-order")
 include(":service:integrated-praise-consumer")
 include(":service:integrated-praise-provider")
 include(":service:integrated-storage")
+include(":service:seata-server")
 
 include(":tools:integrated-frontend")
 include(":tools:test")

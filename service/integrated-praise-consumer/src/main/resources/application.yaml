@@ -15,6 +15,7 @@ spring:
       - optional:nacos:integrated-consumer.yaml
       - optional:nacos:datasource-config.yaml
       - optional:nacos:summer-config.yaml
+      - optional:nacos:seata-config.yaml
 
 
 server:

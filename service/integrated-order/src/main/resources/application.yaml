@@ -18,12 +18,5 @@ spring:
       - optional:nacos:integrated-order.yaml
       - optional:nacos:datasource-config.yaml
       - optional:nacos:summer-config.yaml
+      - optional:nacos:seata-config.yaml
 
-seata:
-  application-id: ${spring.application.name}
-  tx-service-group: ${spring.application.name}-group
-  service:
-    vgroup-mapping:
-      integrated-order-group: default
-    grouplist:
-      default: seata-server:8091

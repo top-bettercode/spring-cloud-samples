@@ -18,12 +18,4 @@ spring:
       - optional:nacos:integrated-account.yaml
       - optional:nacos:datasource-config.yaml
       - optional:nacos:summer-config.yaml
-
-seata:
-  application-id: ${spring.application.name}
-  tx-service-group: ${spring.application.name}-group
-  service:
-    vgroup-mapping:
-      integrated-account-group: default
-    grouplist:
-      default: seata-server:8091
+      - optional:nacos:seata-config.yaml
