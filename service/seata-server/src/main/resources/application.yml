@@ -1,28 +1,18 @@
-base:
-  config:
-    mdb:
-      hostname: 127.0.0.1 #your mysql server ip address
-      dbname: seata #your database name for test
-      port: 3306 #your mysql server listening port
-      username: 'root' #your mysql server username
-      password: 'root' #your mysql server password
-
 server:
   port: 7091
-
-spring:
-  application:
-    name: seata-server
 
 logging:
   config: classpath:logback-spring.xml
   file:
     path: ${user.home}/logs/seata
 
+
+
 console:
   user:
     username: 'seata'
     password: 'seata'
+
 
 seata:
   config:
@@ -39,7 +29,7 @@ seata:
   registry:
     # support: nacos 、 eureka 、 redis 、 zk  、 consul 、 etcd3 、 sofa
     type: nacos
-#    preferred-networks: 30.240.*
+    preferred-networks: 10.8.*
     nacos:
       application: seata-server
       server-addr: nacos-server:8848
@@ -75,7 +65,7 @@ seata:
       distributed-lock-table: distributed_lock
       query-limit: 100
       max-wait: 5000
-#  server:
+  server:
 #    service-port: 8091 #If not configured, the default is '${server.port} + 1000'
   security:
     secretKey: SeataSecretKey0c382ef121d778043159209298fd40bf3850a017

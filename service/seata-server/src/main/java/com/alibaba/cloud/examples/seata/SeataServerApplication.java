@@ -20,7 +20,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 /**
- * @author <a href="mailto:zhangqian9158@gmail.com">ZHANGQIAN</a>
  */
 @SpringBootApplication(scanBasePackages = { "io.seata" })
 public class SeataServerApplication {

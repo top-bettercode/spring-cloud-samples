@@ -2,7 +2,7 @@
 echo "Nacos auto config started"
 datasourceConfig=$(cat ../config/datasource-config.yaml)
 summerConfig=$(cat ../config/summer-config.yaml)
-seataConfig=$(cat ../config/seata-config.yml)
+seataConfig=$(cat ../config/seata-config.yaml)
 seataProperties=$(cat ../config/seata.properties)
 storageConfig=$(cat ../config/integrated-storage.yaml)
 accountConfig=$(cat ../config/integrated-account.yaml)
@@ -11,10 +11,19 @@ gatewayConfig=$(cat ../config/integrated-gateway.yaml)
 providerConfig=$(cat ../config/integrated-provider.yaml)
 consumerConfig=$(cat ../config/integrated-consumer.yaml)
 groupId="integrated-example"
-curl -X POST "nacos-server:8848/nacos/v1/cs/configs" -d "dataId=seata.properties&group=${groupId}&content=${seataProperties}"
-curl -X POST "nacos-server:8848/nacos/v1/cs/configs" -d "dataId=seata-config.yml&group=${groupId}&content=${seataConfig}"
+
+#seata
+curl -X POST "nacos-server:8848/nacos/v1/cs/configs" -d "dataId=registry.preferredNetworks&group=SEATA_GROUP&content=10.8.*"
+curl -X POST "nacos-server:8848/nacos/v1/cs/configs" -d "dataId=seata.properties&group=SEATA_GROUP&content=${seataProperties}"
+curl -X POST "nacos-server:8848/nacos/v1/cs/configs" -d "dataId=seata-config.yaml&group=${groupId}&content=${seataConfig}"
+
+#summer framework
 curl -X POST "nacos-server:8848/nacos/v1/cs/configs" -d "dataId=summer-config.yaml&group=${groupId}&content=${summerConfig}"
+
+#datasource
 curl -X POST "nacos-server:8848/nacos/v1/cs/configs" -d "dataId=datasource-config.yaml&group=${groupId}&content=${datasourceConfig}"
+
+#service
 curl -X POST "nacos-server:8848/nacos/v1/cs/configs" -d "dataId=integrated-storage.yaml&group=${groupId}&content=${storageConfig}"
 curl -X POST "nacos-server:8848/nacos/v1/cs/configs" -d "dataId=integrated-account.yaml&group=${groupId}&content=${accountConfig}"
 curl -X POST "nacos-server:8848/nacos/v1/cs/configs" -d "dataId=integrated-order.yaml&group=${groupId}&content=${orderConfig}"
