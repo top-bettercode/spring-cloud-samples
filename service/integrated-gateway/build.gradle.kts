@@ -7,4 +7,5 @@ dependencies {
     implementation("com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-config")
 
     implementation("com.alibaba.csp:sentinel-spring-cloud-gateway-adapter")
+    implementation("com.alibaba.csp:sentinel-transport-simple-http")
 }
