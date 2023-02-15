@@ -1,0 +1,35 @@
+PK
+FK
+UNIQUE
+INDEX
+IDGENERATOR
+SEQUENCE
+SOFTDELETE
+ASBOOLEAN
+
+@startuml account
+
+entity account {
+    
+    ==
+    id : BIGINT(11) UNSIGNED PK AUTO_INCREMENT NOT NULL -- 
+    user_id : VARCHAR(255) NULL -- user_id
+    money : INT(11) DEFAULT 0 NULL -- 
+    create_time : DATETIME NULL -- 
+    update_time : DATETIME NULL -- 
+}
+
+entity ac_user {
+    用户
+    ==
+    user_id : BIGINT(20) PK AUTO_INCREMENT NOT NULL -- 后台用户主键
+    user_name : VARCHAR(190) INDEX NULL -- 账号名称
+    user_password : VARCHAR(200) NULL -- 密码
+    role_id : BIGINT(20) INDEX NULL -- 角色ID
+    role_name : VARCHAR(100) NULL -- 角色名称
+    super_admin : TINYINT(1) DEFAULT 0 NULL -- 是否超级管理员(0:不是;1:是)
+    deleted : TINYINT(1) DEFAULT 0 NOT NULL SOFTDELETE ASBOOLEAN -- 逻辑删除(0:未删除;1:已删除)
+    last_modified_date : DATETIME DEFAULT CURRENT_TIMESTAMP NULL ON UPDATE CURRENT_TIMESTAMP -- 修改时间
+    created_date : DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL -- 创建时间
+}
+@enduml

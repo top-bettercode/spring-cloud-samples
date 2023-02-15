@@ -16,7 +16,7 @@
 
 package com.alibaba.cloud.integrated.praise.consumer.listener;
 
-import com.alibaba.cloud.integrated.praise.consumer.database.item.ItemIntegService;
+import com.alibaba.cloud.integrated.praise.consumer.praise.item.ItemIntegService;
 import com.alibaba.cloud.integrated.praise.consumer.message.PraiseMessage;
 import com.alibaba.cloud.integrated.praise.consumer.message.PraiseSink;
 import org.springframework.beans.factory.annotation.Autowired;

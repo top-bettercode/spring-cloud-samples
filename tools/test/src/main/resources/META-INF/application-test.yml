@@ -9,6 +9,6 @@ summer:
       data-type: @generator.dataType@
 #      disable-on-exception: false
 
-spring:
-  datasource.url: ''
-  jpa.hibernate.ddl-auto: create-drop
+#spring:
+#  datasource.url: ''
+#  jpa.hibernate.ddl-auto: create-drop

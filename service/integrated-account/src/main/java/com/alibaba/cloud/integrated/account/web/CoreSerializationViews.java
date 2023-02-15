@@ -6,11 +6,19 @@ package com.alibaba.cloud.integrated.account.web;
 public interface CoreSerializationViews {
 
 
-  interface GetaccountList {
+  interface GetAccountList {
 
   }
 
-  interface GetaccountInfo {
+  interface GetAccountInfo {
+
+  }
+
+  interface GetUndoLogList {
+
+  }
+
+  interface GetUndoLogInfo {
 
   }
 }

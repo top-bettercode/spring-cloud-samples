@@ -1,7 +1,7 @@
 package com.alibaba.cloud.integrated.account.support;
 
-import top.bettercode.summer.test.BaseWebAuthTest;
+import top.bettercode.summer.test.BaseWebNoAuthTest;
 
-public class BaseWebTest extends BaseWebAuthTest {
+public class BaseWebTest extends BaseWebNoAuthTest {
 
 }
